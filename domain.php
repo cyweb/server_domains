@@ -7,17 +7,20 @@ function is_it_ok($domain){
     if (in_array($ip, $real_ip)){
         #do something what you want
     }else{
-        mail("your@email",$domain,"this ".$domain." maybe parked or expired");
+        $mes="this ".$domain." maybe parked or expired.\n";
+        return $mes;
     }
 }
 $handle = fopen("/etc/localdomains", "r");
 if ($handle) {
+    $mes="";
     while (($domain = fgets($handle)) !== false) {
         if ($domain!="localhost"){
-            is_it_ok($domain);
+            $mes.=is_it_ok($domain);
         }
     }
     fclose($handle);
+    if (strlen($mes)>0){ mail("your@email.com","Domain check",$mes); }
 } else {
     exit();
 }
