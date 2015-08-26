@@ -12,7 +12,7 @@ function is_it_ok($domain){
     }
 }
 $handle = fopen("/etc/localdomains", "r");
-if ($handle) {
+if ($handle){
     $mes="";
     while (($domain = fgets($handle)) !== false) {
         if ($domain!="localhost"){
@@ -21,7 +21,7 @@ if ($handle) {
     }
     fclose($handle);
     if (strlen($mes)>0){ mail("your@email.com","Domain check",$mes); }
-} else {
+}else{
     exit();
 }
 ?>
