@@ -7,7 +7,7 @@ function is_it_ok($domain){
     if (in_array($ip, $real_ip)){
         #do something what you want
     }else{
-        mail("your@email",$domain,"this ".$domain." maybe parked");
+        mail("your@email",$domain,"this ".$domain." maybe parked or expired");
     }
 }
 $handle = fopen("/etc/localdomains", "r");
