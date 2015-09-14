@@ -20,7 +20,7 @@ if ($handle){
         }
     }
     fclose($handle);
-    if (strlen($mes)>0){ mail("your@email.com","Domain check",$mes); }
+    if ($mes) mail("your@email.com","Domain check",$mes);
 }else{
     exit();
 }
